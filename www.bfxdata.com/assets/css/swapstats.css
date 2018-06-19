@@ -1,0 +1,991 @@
+/************************************* NEW **************************************/
+
+.row {
+    margin-left: -1px;
+    margin-right: -1px;
+}
+
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11/*, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12*/ {
+/* 
+    padding-left: 2px;
+    padding-right: 2px;
+ */
+}
+
+.panel {
+
+    margin-bottom: 0px;
+    margin-top: 0px;
+    border: 0px;
+	box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
+	border-radius: 0px; 
+
+	padding-right: 1px;
+	padding-left: 1px;
+
+} 
+
+.panel-body {
+    padding: 0px;
+} 
+
+.panel-heading {
+    padding: 2px 2px;
+}
+
+.panel .panel-heading {
+
+/* 
+ background-color:#ffffff;
+ font-weight:700;
+ font-size:16px;
+ color:#262626;
+ */
+ border-color:#ccc;
+/* 
+ padding-top:0px;
+ padding-bottom: 0px;
+ */
+
+}
+
+.panel-default>.panel-heading {
+    color: #333;
+    background-color: #FFF;
+	text-align:center;
+}
+
+#topRow {
+margin-top: 0px;
+margin-right:-2px;
+}
+
+#secondRow {
+margin-top: 2px;
+margin-right:-2px;
+margin-left:0px;
+
+}
+
+
+#depthChartPanel, #bidsPanel, #asksPanel, #topRatioRow {
+	margin-top: 2px;
+}
+
+
+ratioChartsColmn {
+padding-right: 2px;
+}
+
+.ratioChartsColmn
+{
+	width:100%;
+}
+
+#lastSwapsChart {
+	width: 100%;
+	height: 450px;
+/* 	height: 435px; */
+    border: 1px solid rgb(255, 255, 255);
+/* 	border-radius: 3px; */
+}
+
+#lastSwapsChartWrapper{
+    margin-top:10px;
+    height:440px;
+/*     height:415px; */
+    background:#FFFFFF;
+    color: C0C0C0;
+    overflow:hide;
+    background-image: url("../../img/spinner.gif"); 
+    background-repeat:no-repeat; 
+    background-position:center;
+    border: 0px solid #FFFFFF; 
+/*     padding-right: 5px; */
+    overflow: hidden;
+}
+
+
+#intervalSelector{
+	position: absolute;
+	left: 5%;
+    top: 305px;
+	z-index: 99;
+}
+
+#resetZoomButtonGroup{
+	margin-left: 50px;
+}
+
+
+#lendbookDepthChart {
+	width: 100%;
+	height: 448px;
+	padding: 10px;
+    border: 1px solid rgb(255, 255, 255);
+	margin-top: 2px;
+/* 	border-radius: 3px; */
+}
+
+#depthZoomSelector{
+	position: absolute;
+	left: 20px;
+    top: 20px;
+	z-index: 99;
+}
+
+#topRatioRow {
+	padding-bottom:2px;
+	padding-right: 1px;
+}
+#secondRatioRow {
+	padding-right: 1px;
+}
+
+#ratioChart1h{
+    height:199px;
+    color: C0C0C0;
+    overflow:hidden;
+    background: rgba(255,255,255,0)   
+}
+
+#ratioChart24h{
+    height:199px;
+    color: C0C0C0;
+    overflow:hidden;
+    background: rgba(255,255,255,0)
+}
+
+
+
+.table-condensed td {
+  padding: 1px;
+  font-size: 70%;
+}
+
+.table-condensed > tfoot > tr > td {
+  padding: 1px;
+  font-size: 70%;
+}
+
+
+
+
+#asksTableDiv{
+    float: left;
+    margin: 3px 0px 0px;
+    clear: both;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    background-repeat:no-repeat; 
+    background-position:center;
+    overflow-x: hidden;
+	overflow-y:scroll;
+/*     border-left: 1px solid #ccc; */
+/* 	padding-right: 5%; */
+
+}
+
+
+#bidsTableDiv{
+    float: left;
+    margin: 3px 0px 0px;
+    clear: both;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    background-repeat:no-repeat; 
+    background-position:center;
+    overflow-x: hidden;
+	overflow-y:scroll;
+}
+
+#volumeTables {
+	top: -100;
+}
+
+.volumTableLabel {
+	text-align: left;
+}
+
+.volumTableValue {
+	text-align: right;
+
+}
+
+
+#volume1hTableDiv {
+    float: left;
+    height: 50px;
+    margin: 3px 0px 0px;
+    clear: both;
+    position: absolute;
+    top: 200; 
+    width: 104%;
+	padding-left: 15%;
+	padding-right: 15%;
+	padding-top: 135px;
+	font-size: 1.2em;
+}
+
+#volume24hTableDiv {
+    float: left;
+    height: 50px;
+    margin: 3px 0px 0px;
+    clear: both;
+    position: absolute;
+    top: 200; 
+    width: 104%;
+	padding-left: 15%;
+	padding-right: 15%;
+	padding-top: 135px;
+	font-size: 1.2em;	
+}
+
+.tableHeader{
+	width: 100%;
+	font-weight: 300;
+	padding-left: 5%;
+}
+
+.tableHeader table{
+	width: 100%;
+	font-weight: 300;
+}
+
+.tableHeader table th{
+	font-weight: 300;
+	text-align: center;
+}
+
+#lastSwapsPanel{
+	padding-bottom:10px;
+}
+
+#statsPanel{
+	padding-bottom:10px;
+}
+
+#bidsPanel{
+	padding-bottom:10px;
+/* 	padding-right:5%; */
+}
+
+#asksPanel{
+	padding-bottom:10px;
+}
+
+#swapsTableDiv {
+    float: left;
+    height: 412px;
+    margin: 3px 0px 0px;
+    clear: both;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    background-repeat:no-repeat; 
+    background-position:center;
+    overflow-x: hidden;
+	overflow-y:scroll;
+/* 	margin-bottom: 10px; */
+/* 	padding-right: 5px; */
+	padding-right: 5%;
+	padding-left: 5%;
+	
+/* 	padding-bottom:10px; */
+}
+
+#lastSwap {
+	text-align: center;
+	font-size: 4em;
+	letter-spacing: -0.06em;
+	color: '#CCC';
+	padding-top: 0px;
+	padding-right: 5px;	
+}
+
+.table-pannel-body {
+    overflow-x: hidden;
+}
+
+#swapsTableDiv td{
+	text-align: right;
+    border: 0px;
+    font-size: 0.9em;
+}
+
+
+
+
+#swapsTableDiv th{
+	text-align: center;
+    border: 0px;
+
+}
+
+#bidsTableDiv td{
+	text-align: right;
+    border: 0px;
+    font-size: 0.8em;    
+}
+
+#volume1hTableDiv td{
+    border: 0px;
+    font-size: 0.8em;
+    
+}
+
+#volume24hTableDiv td{
+    border: 0px;
+    font-size: 0.8em;
+}
+
+
+#bidsTableDiv th{
+	text-align: right;
+    border: 0px;
+
+}
+
+#asksTableDiv td{
+	text-align: right;
+    border: 0px;
+    font-size: 0.8em;    
+}
+
+#asksTableDiv th{
+	text-align: right;
+    border: 0px;
+}
+
+
+
+#swapsTableDiv .table>tbody>tr>td {
+	padding: 0px 0% 0px 0px
+}
+
+
+
+#swapsTableDiv .table-condensed>tbody>tr>td {
+	padding: 0px 0% 0px 0px
+}
+
+#bidsTableDiv .table>tbody>tr>td {
+	padding: 0px 5% 0px 0px
+}
+#bidsTableDiv .table-condensed>tbody>tr>td {
+	padding: 0px 2px 0px 0px
+}
+
+#bidsTableDiv .table>tbody>tr>.td_sum{
+	padding-right:2%;
+}
+
+
+#asksTableDiv .table>tbody>tr>td {
+	padding: 0px 2% 0px 0px
+}
+#asksTableDiv .table-condensed>tbody>tr>td {
+	padding: 0px 2% 0px 0px
+}
+
+#asksTableDiv .table>tbody>tr>.td_price{
+	padding-right:0%;
+}
+
+#volume1hTableDiv .table>tbody>tr>td {
+	padding: 0px 5% 0px 0px
+}
+#volume1hTableDiv .table-condensed>tbody>tr>td {
+	padding: 0px 5% 0px 0px
+}
+
+#volume24hTableDiv .table>tbody>tr>td {
+	padding: 0px 5% 0px 0px
+}
+#volume24hTableDiv .table-condensed>tbody>tr>td {
+	padding: 0px 5% 0px 0px
+}
+
+
+/**************************** stats table ********************************/
+
+/* This code is only meant for previewing your Reflow design. */
+/* 
+.primaryContainer {
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    min-height: 100%;
+    width: 100%;
+}
+ */
+
+#statsTable {
+    float: left;
+    height: 415px;
+    margin: 0px;
+    clear: none;
+    width: 100%;
+    padding-right:5%;
+    padding-top: 5%;
+    overflow: hidden;
+}
+
+.row1 {
+    float: left;
+    height: 10%;
+    margin: 0px;
+    clear: both;
+    width: 100%;
+}
+
+.row2 {
+    float: left;
+    height: 10%;
+    margin: 0px;
+    clear: both;
+    width: 100%;
+}
+
+.row3 {
+    float: left;
+    height: 10%;
+    margin: 0px;
+    clear: both;
+    width: 100%;
+}
+
+.row4 {
+    float: left;
+    height: 10%;
+    margin: 0px;
+    clear: both;
+    width: 100%;
+}
+
+.row5 {
+    float: left;
+    height: 10%;
+    margin: 0px;
+    clear: both;
+    width: 100%;
+}
+
+.row6 {
+    float: left;
+    height: 10%;
+    margin: 0px;
+    clear: both;
+    width: 100%;
+}
+
+.row7 {
+    float: left;
+    height: 10%;
+    margin: 0px;
+    clear: both;
+    width: 100%;
+}
+
+.row8 {
+    float: left;
+    height: 10%;
+    margin: 0px;
+    clear: both;
+    width: 100%;
+}
+
+.row9 {
+    float: left;
+    height: 10%;
+    margin: 0px;
+    clear: both;
+    width: 100%;
+}
+
+.row10 {
+    float: left;
+    height: 10%;
+    margin: 0px;
+    clear: both;
+    width: 100%;
+}
+
+.row1Label {
+    float: left;
+    height: 30%;
+    margin: 0px;
+    clear: none;
+    width: 100%;
+    text-align: right;
+    font-size:0.8em;    
+}
+
+.row1Value {
+    float: left;
+    height: 70%;
+    margin: 0px;
+    clear: both;
+    width: 100%;
+    text-align: right;
+    font-size:1.6em;
+/* 	letter-spacing: -0.11em; */
+    
+}
+
+.row2Label {
+    float: left;
+    height: 30%;
+    margin: 0px;
+    clear: none;
+    width: 100%;
+    text-align: right;
+    font-size:0.8em;    
+}
+
+.row2Value {
+    float: left;
+    height: 70%;
+    margin: 0px;
+    clear: both;
+    width: 100%;
+    text-align: right;
+    font-size:1.6em;    
+/*     letter-spacing: -0.05em; */
+}
+
+.row3Label {
+    float: left;
+    height: 30%;
+    margin: 0px;
+    clear: none;
+    width: 100%;
+    text-align: right;    
+    font-size:0.8em;
+}
+
+.row3Value {
+    float: left;
+    height: 70%;
+    margin: 0px;
+    clear: both;
+    width: 100%;
+    text-align: right;
+    font-size:1.6em;    
+}
+
+.row4Label {
+    float: left;
+    height: 30%;
+    margin: 0px;
+    clear: none;
+    width: 100%;
+    text-align: right;
+    font-size:0.8em;
+}
+
+.row4Value {
+    float: left;
+    height: 70%;
+    margin: 0px;
+    clear: both;
+    width: 100%;
+    text-align: right;
+    font-size:1.6em;    
+}
+
+.row5Label {
+    float: left;
+    height: 30%;
+    margin: 0px;
+    clear: none;
+    width: 100%;
+    text-align: right;
+    font-size:0.8em;
+}
+
+.row5Value {
+    float: left;
+    height: 70%;
+    margin: 0px;
+    clear: both;
+    width: 100%;
+    text-align: right;
+    font-size:1.6em;    
+}
+
+.row6Label {
+    float: left;
+    height: 30%;
+    margin: 0px;
+    clear: none;
+    width: 100%;
+    text-align: right;
+    font-size:0.8em;
+}
+
+.row6Value {
+    float: left;
+    height: 70%;
+    margin: 0px;
+    clear: both;
+    width: 100%;
+    text-align: right;
+    font-size:1.6em;    
+}
+
+.row7Label {
+    float: left;
+    height: 30%;
+    margin: 0px;
+    clear: none;
+    width: 100%;
+    text-align: right;
+    font-size:0.8em;
+}
+
+.row8Label {
+    float: left;
+    height: 30%;
+    margin: 0px;
+    clear: none;
+    width: 100%;
+    text-align: right;
+    font-size:0.8em;
+}
+
+.row9Label {
+    float: left;
+    height: 30%;
+    margin: 0px;
+    clear: none;
+    width: 100%;
+    text-align: right;
+    font-size:0.8em;
+}
+
+.row10Label {
+    float: left;
+    height: 30%;
+    margin: 0px;
+    clear: none;
+    width: 100%;
+    text-align: right;
+    font-size:0.8em;
+}
+
+.row7Value {
+    float: left;
+    height: 70%;
+    margin: 0px;
+    clear: both;
+    width: 100%;
+    text-align: right;
+    font-size:1.6em;    
+}
+
+.row8Value {
+    float: left;
+    height: 70%;
+    margin: 0px;
+    clear: both;
+    width: 100%;
+    text-align: right;
+    font-size:1.6em; 
+/* 	letter-spacing: -0.09em;        */
+}
+
+.row9Value {
+    float: left;
+    height: 70%;
+    margin: 0px;
+    clear: both;
+    width: 100%;
+    text-align: right;
+    font-size:1.6em;
+}
+
+
+.row10Value {
+    float: left;
+    height: 70%;
+    margin: 0px;
+    clear: both;
+    width: 100%;
+    text-align: right;
+    font-size:1.6em;
+}
+
+/* 
+.altcoinTable {
+letter-spacing: -0.05em;
+padding-left: 2%;
+font-size: 0.85em;
+}
+ */
+
+
+@media (max-width:1366px){ 
+
+	#swapsTableDiv td{
+		font-size: 0.9em;    
+	}
+
+	#bidsTableDiv td, #asksTableDiv td{
+		font-size: 0.8em;
+		letter-spacing: -0.05em;    
+	}
+
+
+#lastSwapsChart {
+	height: 345px;
+/* 	height: 435px; */
+}
+
+#lastSwapsChartWrapper{
+    height:330px;
+/*     height:415px; */
+}
+
+#lendbookDepthChart {
+	height: 328px;
+/* 	height: 450px; */
+}
+
+#ratioChart1h{
+    height:139px;
+/*     height:199px; */
+}
+
+#ratioChart24h{
+    height:139px;
+/*     height:199px; */
+}
+
+#asksTableDiv{
+	height: 295px;
+/* 	height: 415px; */
+}
+
+
+#bidsTableDiv{
+	height: 295px;
+/* 	height: 415px; */
+}
+
+#bidsPanel {
+	padding-right: 1%;
+/* 
+	padding-bottom: 5px;
+ */
+	}
+
+
+#volume1hTableDiv {
+	padding-top: 75px;
+	font-size: 1.0em;
+/* 
+	padding-top: 125px;
+	font-size: 1.2em;
+ */
+}
+
+#volume24hTableDiv {
+	padding-top: 75px;
+	font-size: 1.0em;
+/* 
+	padding-top: 125px;
+	font-size: 1.2em;
+ */
+}
+
+#swapsTableDiv {
+    height: 302px;
+/*     height: 412px; */
+}
+
+
+
+
+#statsTable {
+    height: 305px;
+/*     height: 415px; */
+}
+
+ 
+	.row1Label, .row2Label, .row3Label, .row4Label, .row5Label, .row6Label, .row7Label, .row8Label, .row9Label, .row10Label {
+		font-size: 0.8em;    
+	}
+
+	.row1Value, .row2Value, .row3Value, .row4Value, .row5Value, .row6Value, .row7Value, .row8Value, .row9Value, .row10Value {
+	    font-size: 1.4em;
+	}
+
+
+}
+
+
+@media only screen and (min-width:1024px) and (max-width: 1280px)  
+{
+
+	#swapsTableDiv td{
+		font-size: 0.8em;    
+	}
+
+	#bidsTableDiv td, #asksTableDiv td{
+		font-size: 0.7em;
+	    letter-spacing: -0.05em;
+	}
+
+	
+	.row1Label, .row2Label, .row3Label, .row4Label, .row5Label, .row6Label, .row7Label, .row8Label, .row9Label, .row10Label {
+		font-size: 0.8em;    
+	}
+
+	.row1Value, .row2Value, .row3Value, .row4Value, .row5Value, .row6Value, .row7Value, .row8Value, .row9Value, .row10Value {
+	    font-size: 1.4em;
+	}
+	    
+	.row10Label {	    
+    letter-spacing: -0.05em;
+	}   
+
+
+}
+
+@media (min-width:992px) and (max-width:1024px){ 
+
+	#swapsTableDiv td{
+		font-size: 0.8em;    
+	}
+
+	#bidsTableDiv td, #asksTableDiv td{
+		font-size: 0.65em;
+		letter-spacing: -0.05em;    
+	}
+	
+/* 
+	.td_rate {
+		text-align: left;
+	}
+ */
+	
+	.row1Label, .row2Label, .row3Label, .row4Label, .row5Label, .row6Label, .row7Label, .row8Label, .row9Label, .row10Label {
+		font-size: 0.8em;    
+	}
+
+	.row1Value, .row2Value, .row3Value, .row4Value, .row5Value, .row6Value, .row7Value, .row8Value, .row9Value, .row10Value {
+	    font-size: 1.4em;
+	}
+	    
+	.row10Label {	    
+    letter-spacing: -0.05em;
+	}   
+
+}
+
+@media (min-width:992px){ 
+	.ratioChartsColmn {
+	    padding-left: 1px;	
+	}
+}
+@media (max-width:992px){ 
+
+	#lastSwapChartPanel {
+	    padding-right: 2px;
+	}
+
+	#lastSwapsPanel{
+		margin-left: -1px	
+	}
+
+	#swapsTableDiv td{
+		font-size: 0.9em;    
+	}
+
+	.row1Value, .row2Value, .row3Value, .row4Value, .row5Value, .row6Value, .row7Value, .row8Value, .row9Value, .row10Value {
+	    font-size:1.2em;
+/*     letter-spacing: -0.11em; */
+	}   
+
+
+	#bidsTableDiv td, #asksTableDiv td{
+/* 		font-size: 0.7em;     */
+	}
+	
+	#ratioPanelHeading24h {
+/* 		letter-spacing: -0.05em;     */
+	} 
+
+	.td_rate {
+		text-align: left;
+	}
+
+	.row1Label, .row2Label, .row3Label, .row4Label, .row5Label, .row6Label, .row7Label, .row8Label, .row9Label, .row10Label {
+		font-size: 0.8em;    
+	}
+
+/* 
+	#lendbookDepthChart	{
+		Margin-right: 0px;
+	}
+ */
+
+	#bidsPanel{
+		Margin-left: -1px;
+	}
+	
+	#asksPanel {
+/* 		margin-top: 2px; */
+		Margin-right: 0px;
+	}	
+	
+	#depthChartPanel {
+		margin-top: 2px;
+	    padding-right: 2px;
+
+	}
+
+	.ratioChartsColmn {
+	    padding-right: 1px;	
+	}
+	
+	#depthChartPanel, #lastSwapsPanel, #bidsPanel, #asksPanel, #statsPanel, #topRatioRow {
+		margin-top: 2px;
+	}
+
+	#ratioChart24h, #ratioChart1h {
+		height: 144px;
+	}
+
+}
+
+}
+
+@media only screen and (min-width:1024px) and (max-width: 1280px)  
+{
+
+	#swapsTableDiv td{
+		font-size: 0.8em;    
+	}
+
+	#bidsTableDiv td, #asksTableDiv td{
+		font-size: 0.7em !important;
+	    letter-spacing: -0.05em;
+	}
+
+	
+	.row1Label, .row2Label, .row3Label, .row4Label, .row5Label, .row6Label, .row7Label, .row8Label, .row9Label, .row10Label {
+		font-size: 0.8em;    
+	}
+
+	.row1Value, .row2Value, .row3Value, .row4Value, .row5Value, .row6Value, .row7Value, .row8Value, .row9Value, .row10Value {
+	    font-size: 1.4em;
+	}
+	    
+	.row10Label {	    
+    letter-spacing: -0.05em;
+	}   
+
+
+}
+

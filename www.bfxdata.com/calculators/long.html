@@ -1,0 +1,1403 @@
+<!DOCTYPE html>
+<html>
+    
+<!-- Mirrored from www.bfxdata.com/calculators/long by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 19 Jun 2018 16:09:47 GMT -->
+<head>
+
+    <link rel="shortcut icon" href="favicon.ico">
+
+    <title>Bitfinex Long Position Calculator</title>
+	    <meta name="Bfxdata" content="">
+
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0" />
+ 	 	<link href='http://fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
+	<link href="../../maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+     <script src="../../ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>  
+
+    <script src="../style/js/bootstrap.min.js"></script>
+
+	<!-- 	<script src="//cdn.socket.io/socket.io-1.3.4.js"></script> -->
+	<script src="../../cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.4/socket.io.js"></script>
+   
+    <!-- Bootstrap core CSS -->
+<!--   	<link rel="stylesheet" href="boilerplate.css" /> -->
+
+    <link href="../style/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+
+	<link rel="stylesheet" href="calculators.css" />
+   
+    	<script type="text/javascript">
+	    var d = new Date()
+// 	    var offset= -d.getTimezoneOffset()/60;
+	    var offset= -1;
+	    
+		$(document).ready(function(){
+   			//refreshTickers()				;
+
+			
+		});
+
+		function refreshTickers(){
+		    filelink = "../tickers.html";
+			$('#ticker').load(filelink, function(){
+			   setTimeout(refreshTickers, 55000);
+			});
+		}
+
+	</script>
+    
+    
+    
+	<script src="../scripts/ticker_rt.js"></script>
+    
+    
+	<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','../../www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-47091875-1', 'bfxdata.com');
+	ga('require', 'displayfeatures');
+    ga('send', 'pageview');
+
+</script>
+    
+    </head>
+    
+    <body>
+
+
+                    
+  <!-- Calculator Modal -->
+<div class="modal fade" id="calculatorLongModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header"> 
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Profit / Loss Trade Calculator Explained</h4>
+      </div>
+      <div class="modal-body">
+
+				This tool will help traders on Bitfinex.com to calculate profits or losses on long postions (= buy coins  <span class="glyphicon glyphicon-arrow-right" style="font-size:0.8em;"></span>  sell coins).
+				By specifying your maker and taker fees, the number of coins and the price to open a position, the calculator outputs
+				a Break Even Price (the price to close the position without profit/loss after paying fees) and tables displaying possible profit / loss
+				when closing the position at the given price. 
+				</p>
+				<em>The line on top will output:</em>
+				<table border="0px"> 
+					<tr>
+						<td width="25%" valign="top"><em>Break Even Price: </em></td>
+						<td valign="top">the price to close the position without profit/loss after paying opening and closing fees</td>
+					</tr>
+					<tr>	
+						<td valign="top"><em>Buy Amount (USD): </em></td>
+						<td valign="top">the total USD amount to open the position (including the fees to open the position)</td>
+					</tr>
+					<tr>	
+						<td valign="top"><em>Buy Fee: </em></td>
+						<td valign="top">the fees payed for opening the position</td>
+					</tr>
+				</table>
+				<br>	
+				<em>The Profit and loss Tables show:</em>
+				<table border="0px"> 
+					<tr>
+						<td width="25%" valign="top"><em>Sell @: </em></td>
+						<td valign="top">the price to close the position at</td>
+					</tr>	
+					<tr>
+						<td valign="top"><em>Price Diff.: </em></td>
+						<td valign="top">the USD difference between the buy price and the sell price</td>
+					</tr>	
+					<tr>	
+						<td valign="top"><em>Profit USD: </em></td>
+						<td valign="top">the profit of the trade in USD after paying opening and closing fees</td>
+					</tr>	
+					<tr>	
+						<td valign="top"><em>Profit %: </em></td>
+						<td valign="top">the profit of the trade in percentage after paying opening and closing fees</td>
+					</tr>	
+					<tr>	
+						<td valign="top"><em>Order Return: </em></td>
+						<td valign="top">the total amount in USD returned to your account’s balance after closing the position</td>
+					</tr>	
+					<tr>	
+						<td valign="top"><em>Sell Fee: </em></td>
+						<td valign="top">the fees payed for closing the position</td>
+					</tr>
+				</table>
+
+				<img src="img/longCalc.png" alt="Calculations">
+       
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+    <div id="primaryContainer" class="primaryContainer clearfix">
+        <div id="outer" class="clearfix">
+           
+
+              		
+<nav class="navbar navbar-static-top header">
+ 	<div class="col-md-12">
+        <div class="navbar-header">
+          
+          <a href="../index.html" class="navbar-brand"><span style="font-weight:800;">BFX</span><span style="font-weight:300;">DATA</span></a>
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse1" id="collapsbutton">
+          <i><img src="../img/mobile_table_gray.png" width="15" height="15"></i>
+          </button>
+      
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-collapse1">
+          <ul class="nav navbar-nav navbar-right">
+				
+				
+				<li class="dropdown" id="share_buttons">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-share-alt"></i></a>
+				<ul class="dropdown-menu" style="min-width: 80px; width: 80px;">
+					<li><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fhttp%3Abfxdata.com&amp;t=" target="_blank" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(document.URL) + '&t=' + encodeURIComponent(document.URL)); return false;"><img src="../social/images/flat_web_icon_set/inverted/Facebook.png"></a></li>
+					<li><a href="https://twitter.com/intent/tweet?source=http%3A%2F%2Fhttp%3Abfxdata.com&amp;text=:%20http%3A%2F%2Fhttp%3Abfxdata.com&amp;via=bfxdata" target="_blank" title="Tweet" onclick="window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(document.title) + '%20' + encodeURIComponent(document.URL)); return false;"><img src="../social/images/flat_web_icon_set/inverted/Twitter.png"></a></li>
+					<li><a href="https://plus.google.com/share?url=http%3A%2F%2Fhttp%3Abfxdata.com" target="_blank" title="Share on Google+" onclick="window.open('https://plus.google.com/share?url=' + encodeURIComponent(document.URL)); return false;"><img src="../social/images/flat_web_icon_set/inverted/Google%2b.png"></a></li>
+					<li><a href="http://www.reddit.com/submit?url=http%3A%2F%2Fhttp%3Abfxdata.com&amp;title=" target="_blank" title="Submit to Reddit" onclick="window.open('http://www.reddit.com/submit?url=' + encodeURIComponent(document.URL) + '&title=' +  encodeURIComponent(document.title)); return false;"><img src="../social/images/flat_web_icon_set/inverted/Reddit.png"></a></li>
+				</ul>
+				</li>
+				
+				<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Margin Funding<b class="caret"></b></a>
+				<ul class="dropdown-menu">
+					<li class="dropdown-header">Select Symbol: </li>
+					<li class="dropdown-submenu">
+					<a tabindex="-1" href="#">USD</a>
+					<ul class="dropdown-menu">
+						<li><a href="../swapstats/usd.html">Live</a></li>
+						<li><a href="../swaphistory/usd.html">Historic</a></li>						
+					</ul>
+					</li>
+					<li class="dropdown-submenu">
+					<a tabindex="-1" href="#">BTC</a>
+					<ul class="dropdown-menu">
+						<li><a href="../swapstats/btc.html">Live</a></li>
+						<li><a href="../swaphistory/btc.html">Historic</a></li>
+					</ul>
+					</li>
+					<li class="dropdown-submenu">
+					<a tabindex="-1" href="#">ETH</a>
+					<ul class="dropdown-menu">
+						<li><a href="../swapstats/eth.html">Live</a></li>
+						<li><a href="../swaphistory/eth.html">Historic</a></li>						
+					</ul>
+					</li>
+					<li class="dropdown-submenu">
+					<a tabindex="-1" href="#">ETC</a>
+					<ul class="dropdown-menu">
+						<li><a href="../swapstats/etc.html">Live</a></li>
+						<li><a href="../swaphistory/etc.html">Historic</a></li>						
+					</ul>
+					</li>
+					<li class="dropdown-submenu">
+					<a tabindex="-1" href="#">BFX</a>
+					<ul class="dropdown-menu">
+						<li><a href="../swapstats/bfx.html">Live</a></li>
+						<li><a href="../swaphistory/bfx.html">Historic</a></li>
+					</ul>
+					</li>
+					<li class="dropdown-submenu">
+					<a tabindex="-1" href="#">LTC</a>
+					<ul class="dropdown-menu">
+						<li><a href="../swapstats/ltc.html">Live</a></li>
+						<li><a href="../swaphistory/ltc.html">Historic</a></li>						
+					</ul>
+					</li>
+																				
+					<li class="dropdown-header">Sum Active Margin Funding</li>
+					<li><a href="../swaphistory/totals.html">Totals</a></li>						
+
+				</ul>
+				</li>
+
+				
+				<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Bitfinex Orderbooks<b class="caret"></b></a>
+				<ul class="dropdown-menu">
+					<li class="dropdown-header">Select Symbol: </li>
+							<li><a href="../orderbooks/btcusd.html">BTCUSD</a></li>
+							<li><a href="../orderbooks/ethusd.html">ETHUSD</a></li>
+							<li><a href="../orderbooks/etcusd.html">ETCUSD</a></li>
+							<li><a href="../orderbooks/ltcusd.html">LTCUSD</a></li>
+							<li><a href="../orderbooks/bfxusd.html">BFXUSD</a></li>
+							<li><a href="../orderbooks/ethbtc.html">ETHBTC</a></li>
+							<li><a href="../orderbooks/etcbtc.html">ETCBTC</a></li>
+							<li><a href="../orderbooks/ltcbtc.html">LTCBTC</a></li>
+							<li><a href="../orderbooks/bfxbtc.html">BFXBTC</a></li>
+				</ul>
+				</li>
+
+				<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Sentiment<b class="caret"></b></a>
+				<ul class="dropdown-menu">
+					<li class="dropdown-header">Long Vs Short</li>
+							<li><a href="../positions/btcusd.html">BTCUSD</a></li>
+							<li><a href="../positions/ethusd.html">ETHUSD</a></li>
+							<li><a href="../positions/etcusd.html">ETCUSD</a></li>
+							<li><a href="../positions/ltcusd.html">LTCUSD</a></li>
+							<li><a href="../positions/bfxusd.html">BFXUSD</a></li>
+							<li><a href="../positions/ethbtc.html">ETHBTC</a></li>
+							<li><a href="../positions/etcbtc.html">ETCBTC</a></li>
+							<li><a href="../positions/ltcbtc.html">LTCBTC</a></li>
+							<li><a href="../positions/bfxbtc.html">BFXBTC</a></li>
+					</ul>
+				</li>
+
+				<li><a href="../datadownload/index.html">CSV-files</a></li>
+			
+				
+				
+			<!--	<li><a href="#" data-toggle="modal" data-target="#refererModal" style="color:red;">10% Bitfinex Fee Discount</a></li> -->
+				
+				<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Calculators<b class="caret"></b></a>
+				<ul class="dropdown-menu">
+					<li class="dropdown-header">Trade Calculators</li>
+					<li><a href="long.html">Long Position</a></li>
+					<li><a href="short.html">Short Position</a></li>
+					<li class="dropdown-header">Margin Funding Calculator</li>
+					<li><a href="swaps.html">Fixed % Interst Calculator</a></li>	
+					<li><a href="frrswaps.html">FRR % Interest Calculator</a></li>		
+				</ul>
+				</li>
+				<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Mobile<b class="caret"></b></a>
+				<ul class="dropdown-menu">
+					<li><a href="#" data-toggle="modal" data-target="#adnroidAppModal">Android App</a></li>
+				</ul>
+				</li>
+				<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Donate<b class="caret"></b></a>
+				<ul class="dropdown-menu">
+					<li><a target="_blank" href="https://blockchain.info/address/1EU22zLeBedUyqwyTTRpULidMwA296NRpk">Bitcoin</a></li>
+					<li><a target="_blank" href="https://live.blockcypher.com/ltc/address/LQsRc1aRsy882WtdJre4RKSBEzKMHta2n8/">Litcoin</a></li>
+					<li><a target="_blank" href="http://omnichest.info/lookupadd.aspx?address=1Fqmr5UuP1qA8DQu4MfQ5cfvXN5NymGfMh">Tether</a></li>
+					<li><a target="_blank" href="https://etherscan.io/address/0xa5fefb7c61ba9d8029ab02e0e3ebeb8f12b4368c">Ether</a></li>							
+					<li><a target="_blank" href="http://gastracker.io/addr/0xa5fefb7c61ba9d8029ab02e0e3ebeb8f12b4368c">Ether Classic</a></li>							
+				</ul>
+				</li>
+				<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Feedback<b class="caret"></b></a>
+				<ul class="dropdown-menu">
+					<li><a target="_blank" href="mailto:bfxdata@gmail.com">Contact</a></li>
+					<li><a target="_blank" href="https://bitcointalk.org/index.php?topic=390218.0">Feedback</a></li>
+				</ul>
+				</li>
+				<li><a href="#" data-toggle="modal" data-target="#newsModal">News</a>
+				</li>
+           </ul>
+        </div>	
+     </div>	
+</nav>
+
+
+
+
+
+           			<div id="ticker">
+              		<div id="tickerTablediv" class="tickerTable" style="margin: auto;">
+    <table style="margin: auto;" class="text-nowrap">
+        <tr>
+
+            <td  <td colspan="2">
+
+					<div id="clock"></div>
+
+
+            </td>
+<!-- 
+            <td>
+                &nbsp; &nbsp;
+            </td>
+ -->
+			<div id="ticker_BTCUSD">
+            <td class="ticker_bold" style="color:#428bca;">BTCUSD:</td>
+            <td class='ticker_bold'>Bitfinex:</td>
+            <div><td id="bitfinexBTCUSD">0</td></div>
+            <td class='ticker_bold text-nowrap'>BTCe:</td>
+            <div><td id="btceBTCUSD">0</td></div>
+            <td class='ticker_bold'>Bitstamp:</td>
+            <div><td id="bitstampBTCUSD">0</td></div>
+            </div>
+			<div id="ticker_BTCCNY">            
+            <td class="ticker_bold" style="color:#428bca;">BTCCNY:</td>
+            <td class='ticker_bold'>Huobi:</td>
+            <div><td id="huobiBTCCNY">0</td></div>
+            <td class='ticker_bold'>BtcChina:</td>
+            <div><td id="btcchinaBTCCNY">0</td></div>
+            <td class='ticker_bold'>OkCoin:</td>
+            <div><td id="okcoinBTCCNY">0</td></div>
+            </div> 
+        	<div id="ticker_LTCUSD">            
+            <td class="ticker_bold" style="color:#428bca;">LTCUSD:</td>
+            <td class='ticker_bold'>Bitfinex:</td>
+            <div><td id="bitfinexLTCUSD">0</td></div>
+            <td class='ticker_bold text-nowrap'>BTCe:</td>
+            <div><td id="btceLTCUSD">0</td></div>
+            </div> 
+        	<div id="ticker_LTCCNY">                        
+            <td class="ticker_bold" style="color:#428bca;">LTCCNY:</td>
+            <td class='ticker_bold'>Okcoin:</td>
+            <div><td id="okcoinLTCCNY">0</td></div>
+            <td class='ticker_bold'>Huobi:</td>
+            <div><td id="huobiLTCCNY">0</td></div>
+            </div>
+        </tr>
+    </table>
+</div>           			
+           			</div>
+
+
+           
+            <div id="mainContent" class="clearfix">
+
+
+				   <div class="row">
+				   <div class="col-md-12 col-sm-12">
+						  <div class="panel panel-default">
+<!-- 						  <div class="panel-heading"><h4>Volex (BTC) vs Price BTCUSD (1h Vwap)</h4></div> -->
+							<div class="panel-body">
+							
+							
+								<div id="calculatorOutputWrapper">		  
+	
+									
+                            <div class='calculatorOutput'>
+                            Break-even Price: 6,737.898 &nbsp; | &nbsp; Buy Amount (USD): 6,724.422 &nbsp; | &nbsp; Buy Fee: 13.422
+                            </div>
+                            
+    <form method="POST" action="https://www.bfxdata.com/calculators/long.php">
+
+	<div class="calculatorFormBorder">
+
+		<h4>Trade Calculator 
+		 <br> <span style="font-size:0.7em;">(Long Position) 
+		 </span></h4>
+
+        <p>
+        <lable>Select Symbol</lable><br>
+        &nbsp;<input type="radio" name="coinSelector" value="BTC" checked> BTC &nbsp;
+        &nbsp;<input type="radio" name="coinSelector" value="LTC" > LTC
+		</p><p>
+        
+        <lable>Order Amount (BTC/LTC)</lable><br>
+        <input type="text" name="buyNrCoins" value="1">
+        </p><p>
+        Buy Price<br>
+        <input type="text" name="buyPrice" value="6711">
+        </p><p>
+        Maker Fee<br>
+        <input type="text" name="makerFee" value="0.1"><br>
+        </p><p>
+        Taker Fee<br>
+        <input type="text" name="takerFee" value="0.2">
+		</p><p>
+      
+Open position<br>
+&nbsp;<input type="radio" name="buyFee" value="market" checked> Market &nbsp;
+&nbsp;<input type="radio" name="buyFee" value="limit" > Limit <br>
+</p><p>
+Close Position<br>
+&nbsp;<input type="radio" name="sellFee" value="market" checked> Market &nbsp; 
+&nbsp;<input type="radio" name="sellFee" value="limit" > Limit <br><br>
+</p>
+
+ <input type="submit" name="submit" class="btn btn-primary btn-sm" value="Calculate">
+   			&nbsp;&nbsp;<a href="#" data-toggle="modal" data-target="#calculatorLongModal">Help&nbsp;&nbsp;<span class="glyphicon glyphicon-question-sign"></span></a>
+    </form>
+</div>
+     	<div id="profitTable" class="calculatorTable">
+
+   					
+
+   					<table> 					
+						<tr>							
+							<th style="background-color: #DDE9C6; color:#374D6C; border-right: 1px solid #ccc; border-bottom: 0px" colspan="6"><h3>Profit</h3></th>
+
+						</tr>
+						<tr>
+							<th>Sell @</th>
+							<th>Price Diff.</th>
+							<th>Profit USD</th>
+							<th>Profit %</th> 
+							<th>Order Return</th>
+							<th>Sell Fee</th>
+						</tr>
+				<tr>
+					<td>6,737.898</td>
+					<td>26.898</td>
+					<td>0.000</td>
+					<td>0.000</td>
+					<td>6,724.422</td>
+					<td>13.476</td>
+					
+				</tr>
+            <tr>
+					<td>6,738.398</td>
+					<td>27.398</td>
+					<td>0.499</td>
+					<td>0.007</td>
+					<td>6,724.921</td>
+					<td>13.477</td>
+					
+            </tr>
+            <tr>
+					<td>6,738.898</td>
+					<td>27.898</td>
+					<td>0.998</td>
+					<td>0.015</td>
+					<td>6,725.420</td>
+					<td>13.478</td>
+					
+            </tr>
+            <tr>
+					<td>6,739.398</td>
+					<td>28.398</td>
+					<td>1.497</td>
+					<td>0.022</td>
+					<td>6,725.919</td>
+					<td>13.479</td>
+					
+            </tr>
+            <tr>
+					<td>6,739.898</td>
+					<td>28.898</td>
+					<td>1.996</td>
+					<td>0.030</td>
+					<td>6,726.418</td>
+					<td>13.480</td>
+					
+            </tr>
+            <tr>
+					<td>6,740.398</td>
+					<td>29.398</td>
+					<td>2.495</td>
+					<td>0.037</td>
+					<td>6,726.917</td>
+					<td>13.481</td>
+					
+            </tr>
+            <tr>
+					<td>6,740.898</td>
+					<td>29.898</td>
+					<td>2.994</td>
+					<td>0.045</td>
+					<td>6,727.416</td>
+					<td>13.482</td>
+					
+            </tr>
+            <tr>
+					<td>6,741.398</td>
+					<td>30.398</td>
+					<td>3.493</td>
+					<td>0.052</td>
+					<td>6,727.915</td>
+					<td>13.483</td>
+					
+            </tr>
+            <tr>
+					<td>6,741.898</td>
+					<td>30.898</td>
+					<td>3.992</td>
+					<td>0.059</td>
+					<td>6,728.414</td>
+					<td>13.484</td>
+					
+            </tr>
+            <tr>
+					<td>6,742.398</td>
+					<td>31.398</td>
+					<td>4.491</td>
+					<td>0.067</td>
+					<td>6,728.913</td>
+					<td>13.485</td>
+					
+            </tr>
+            <tr>
+					<td>6,742.898</td>
+					<td>31.898</td>
+					<td>4.990</td>
+					<td>0.074</td>
+					<td>6,729.412</td>
+					<td>13.486</td>
+					
+            </tr>
+            <tr>
+					<td>6,743.398</td>
+					<td>32.398</td>
+					<td>5.489</td>
+					<td>0.082</td>
+					<td>6,729.911</td>
+					<td>13.487</td>
+					
+            </tr>
+            <tr>
+					<td>6,743.898</td>
+					<td>32.898</td>
+					<td>5.988</td>
+					<td>0.089</td>
+					<td>6,730.410</td>
+					<td>13.488</td>
+					
+            </tr>
+            <tr>
+					<td>6,744.398</td>
+					<td>33.398</td>
+					<td>6.487</td>
+					<td>0.096</td>
+					<td>6,730.909</td>
+					<td>13.489</td>
+					
+            </tr>
+            <tr>
+					<td>6,744.898</td>
+					<td>33.898</td>
+					<td>6.986</td>
+					<td>0.104</td>
+					<td>6,731.408</td>
+					<td>13.490</td>
+					
+            </tr>
+            <tr>
+					<td>6,745.398</td>
+					<td>34.398</td>
+					<td>7.485</td>
+					<td>0.111</td>
+					<td>6,731.907</td>
+					<td>13.491</td>
+					
+            </tr>
+            <tr>
+					<td>6,745.898</td>
+					<td>34.898</td>
+					<td>7.984</td>
+					<td>0.119</td>
+					<td>6,732.406</td>
+					<td>13.492</td>
+					
+            </tr>
+            <tr>
+					<td>6,746.398</td>
+					<td>35.398</td>
+					<td>8.483</td>
+					<td>0.126</td>
+					<td>6,732.905</td>
+					<td>13.493</td>
+					
+            </tr>
+            <tr>
+					<td>6,746.898</td>
+					<td>35.898</td>
+					<td>8.982</td>
+					<td>0.134</td>
+					<td>6,733.404</td>
+					<td>13.494</td>
+					
+            </tr>
+            <tr>
+					<td>6,747.398</td>
+					<td>36.398</td>
+					<td>9.481</td>
+					<td>0.141</td>
+					<td>6,733.903</td>
+					<td>13.495</td>
+					
+            </tr>
+            <tr>
+					<td>6,747.898</td>
+					<td>36.898</td>
+					<td>9.980</td>
+					<td>0.148</td>
+					<td>6,734.402</td>
+					<td>13.496</td>
+					
+            </tr>
+            <tr>
+					<td>6,748.398</td>
+					<td>37.398</td>
+					<td>10.479</td>
+					<td>0.156</td>
+					<td>6,734.901</td>
+					<td>13.497</td>
+					
+            </tr>
+            <tr>
+					<td>6,748.898</td>
+					<td>37.898</td>
+					<td>10.978</td>
+					<td>0.163</td>
+					<td>6,735.400</td>
+					<td>13.498</td>
+					
+            </tr>
+            <tr>
+					<td>6,749.398</td>
+					<td>38.398</td>
+					<td>11.477</td>
+					<td>0.171</td>
+					<td>6,735.899</td>
+					<td>13.499</td>
+					
+            </tr>
+            <tr>
+					<td>6,749.898</td>
+					<td>38.898</td>
+					<td>11.976</td>
+					<td>0.178</td>
+					<td>6,736.398</td>
+					<td>13.500</td>
+					
+            </tr>
+            <tr>
+					<td>6,750.398</td>
+					<td>39.398</td>
+					<td>12.475</td>
+					<td>0.186</td>
+					<td>6,736.897</td>
+					<td>13.501</td>
+					
+            </tr>
+            <tr>
+					<td>6,750.898</td>
+					<td>39.898</td>
+					<td>12.974</td>
+					<td>0.193</td>
+					<td>6,737.396</td>
+					<td>13.502</td>
+					
+            </tr>
+            <tr>
+					<td>6,751.398</td>
+					<td>40.398</td>
+					<td>13.473</td>
+					<td>0.200</td>
+					<td>6,737.895</td>
+					<td>13.503</td>
+					
+            </tr>
+            <tr>
+					<td>6,751.898</td>
+					<td>40.898</td>
+					<td>13.972</td>
+					<td>0.208</td>
+					<td>6,738.394</td>
+					<td>13.504</td>
+					
+            </tr>
+            <tr>
+					<td>6,752.398</td>
+					<td>41.398</td>
+					<td>14.471</td>
+					<td>0.215</td>
+					<td>6,738.893</td>
+					<td>13.505</td>
+					
+            </tr>
+            <tr>
+					<td>6,752.898</td>
+					<td>41.898</td>
+					<td>14.970</td>
+					<td>0.223</td>
+					<td>6,739.392</td>
+					<td>13.506</td>
+					
+            </tr>
+            <tr>
+					<td>6,753.398</td>
+					<td>42.398</td>
+					<td>15.469</td>
+					<td>0.230</td>
+					<td>6,739.891</td>
+					<td>13.507</td>
+					
+            </tr>
+            <tr>
+					<td>6,753.898</td>
+					<td>42.898</td>
+					<td>15.968</td>
+					<td>0.237</td>
+					<td>6,740.390</td>
+					<td>13.508</td>
+					
+            </tr>
+            <tr>
+					<td>6,754.398</td>
+					<td>43.398</td>
+					<td>16.467</td>
+					<td>0.245</td>
+					<td>6,740.889</td>
+					<td>13.509</td>
+					
+            </tr>
+            <tr>
+					<td>6,754.898</td>
+					<td>43.898</td>
+					<td>16.966</td>
+					<td>0.252</td>
+					<td>6,741.388</td>
+					<td>13.510</td>
+					
+            </tr>
+            <tr>
+					<td>6,755.398</td>
+					<td>44.398</td>
+					<td>17.465</td>
+					<td>0.260</td>
+					<td>6,741.887</td>
+					<td>13.511</td>
+					
+            </tr>
+            <tr>
+					<td>6,755.898</td>
+					<td>44.898</td>
+					<td>17.964</td>
+					<td>0.267</td>
+					<td>6,742.386</td>
+					<td>13.512</td>
+					
+            </tr>
+            <tr>
+					<td>6,756.398</td>
+					<td>45.398</td>
+					<td>18.463</td>
+					<td>0.275</td>
+					<td>6,742.885</td>
+					<td>13.513</td>
+					
+            </tr>
+            <tr>
+					<td>6,756.898</td>
+					<td>45.898</td>
+					<td>18.962</td>
+					<td>0.282</td>
+					<td>6,743.384</td>
+					<td>13.514</td>
+					
+            </tr>
+            <tr>
+					<td>6,757.398</td>
+					<td>46.398</td>
+					<td>19.461</td>
+					<td>0.289</td>
+					<td>6,743.883</td>
+					<td>13.515</td>
+					
+            </tr>
+            <tr>
+					<td>6,757.898</td>
+					<td>46.898</td>
+					<td>19.960</td>
+					<td>0.297</td>
+					<td>6,744.382</td>
+					<td>13.516</td>
+					
+            </tr>
+            <tr>
+					<td>6,758.398</td>
+					<td>47.398</td>
+					<td>20.459</td>
+					<td>0.304</td>
+					<td>6,744.881</td>
+					<td>13.517</td>
+					
+            </tr>
+            <tr>
+					<td>6,758.898</td>
+					<td>47.898</td>
+					<td>20.958</td>
+					<td>0.312</td>
+					<td>6,745.380</td>
+					<td>13.518</td>
+					
+            </tr>
+            <tr>
+					<td>6,759.398</td>
+					<td>48.398</td>
+					<td>21.457</td>
+					<td>0.319</td>
+					<td>6,745.879</td>
+					<td>13.519</td>
+					
+            </tr>
+            <tr>
+					<td>6,759.898</td>
+					<td>48.898</td>
+					<td>21.956</td>
+					<td>0.327</td>
+					<td>6,746.378</td>
+					<td>13.520</td>
+					
+            </tr>
+            <tr>
+					<td>6,760.398</td>
+					<td>49.398</td>
+					<td>22.455</td>
+					<td>0.334</td>
+					<td>6,746.877</td>
+					<td>13.521</td>
+					
+            </tr>
+            <tr>
+					<td>6,760.898</td>
+					<td>49.898</td>
+					<td>22.954</td>
+					<td>0.341</td>
+					<td>6,747.376</td>
+					<td>13.522</td>
+					
+            </tr>
+            <tr>
+					<td>6,761.398</td>
+					<td>50.398</td>
+					<td>23.453</td>
+					<td>0.349</td>
+					<td>6,747.875</td>
+					<td>13.523</td>
+					
+            </tr>
+            <tr>
+					<td>6,761.898</td>
+					<td>50.898</td>
+					<td>23.952</td>
+					<td>0.356</td>
+					<td>6,748.374</td>
+					<td>13.524</td>
+					
+            </tr>
+            <tr>
+					<td>6,762.398</td>
+					<td>51.398</td>
+					<td>24.451</td>
+					<td>0.364</td>
+					<td>6,748.873</td>
+					<td>13.525</td>
+					
+            </tr>
+            <tr>
+					<td>6,762.898</td>
+					<td>51.898</td>
+					<td>24.950</td>
+					<td>0.371</td>
+					<td>6,749.372</td>
+					<td>13.526</td>
+					
+            </tr></table> 
+	</div>
+   	
+   <div id="lossTable" class="calculatorTable">
+					
+					<table>
+					<tr>
+<!--						<th class="calculatorTableTitleLoss" colspan="6"><h3>Loss</h3></th> -->
+						<th style="background-color: #FFD6CC; color:#374D6C; border-right: 1px solid #ccc; border-bottom: 0px" colspan="6	"><h3>Loss</h3></th>
+					</tr>
+					<tr>
+						<th>Sell @</th>
+						<th>Price Diff.</th>
+						<th>Loss USD</th>
+						<th>Loss %</th> 
+						<th>Order Return</th>
+						<th>Sell fee</th> 
+					</tr>
+				<tr>
+					<td>6,737.898</td>
+					<td>26.898</td>
+					<td>0.000</td>
+					<td>0.000</td>
+					<td>6,724.422</td>
+					<td>13.476</td>
+				</tr>
+            <tr>
+					<td>6,737.398</td>
+					<td>26.398</td>
+					<td>-0.499</td>
+					<td>-0.007</td>
+					<td>6,723.923</td>
+					<td>13.475</td>
+					
+            </tr>
+            <tr>
+					<td>6,736.898</td>
+					<td>25.898</td>
+					<td>-0.998</td>
+					<td>-0.015</td>
+					<td>6,723.424</td>
+					<td>13.474</td>
+					
+            </tr>
+            <tr>
+					<td>6,736.398</td>
+					<td>25.398</td>
+					<td>-1.497</td>
+					<td>-0.022</td>
+					<td>6,722.925</td>
+					<td>13.473</td>
+					
+            </tr>
+            <tr>
+					<td>6,735.898</td>
+					<td>24.898</td>
+					<td>-1.996</td>
+					<td>-0.030</td>
+					<td>6,722.426</td>
+					<td>13.472</td>
+					
+            </tr>
+            <tr>
+					<td>6,735.398</td>
+					<td>24.398</td>
+					<td>-2.495</td>
+					<td>-0.037</td>
+					<td>6,721.927</td>
+					<td>13.471</td>
+					
+            </tr>
+            <tr>
+					<td>6,734.898</td>
+					<td>23.898</td>
+					<td>-2.994</td>
+					<td>-0.045</td>
+					<td>6,721.428</td>
+					<td>13.470</td>
+					
+            </tr>
+            <tr>
+					<td>6,734.398</td>
+					<td>23.398</td>
+					<td>-3.493</td>
+					<td>-0.052</td>
+					<td>6,720.929</td>
+					<td>13.469</td>
+					
+            </tr>
+            <tr>
+					<td>6,733.898</td>
+					<td>22.898</td>
+					<td>-3.992</td>
+					<td>-0.059</td>
+					<td>6,720.430</td>
+					<td>13.468</td>
+					
+            </tr>
+            <tr>
+					<td>6,733.398</td>
+					<td>22.398</td>
+					<td>-4.491</td>
+					<td>-0.067</td>
+					<td>6,719.931</td>
+					<td>13.467</td>
+					
+            </tr>
+            <tr>
+					<td>6,732.898</td>
+					<td>21.898</td>
+					<td>-4.990</td>
+					<td>-0.074</td>
+					<td>6,719.432</td>
+					<td>13.466</td>
+					
+            </tr>
+            <tr>
+					<td>6,732.398</td>
+					<td>21.398</td>
+					<td>-5.489</td>
+					<td>-0.082</td>
+					<td>6,718.933</td>
+					<td>13.465</td>
+					
+            </tr>
+            <tr>
+					<td>6,731.898</td>
+					<td>20.898</td>
+					<td>-5.988</td>
+					<td>-0.089</td>
+					<td>6,718.434</td>
+					<td>13.464</td>
+					
+            </tr>
+            <tr>
+					<td>6,731.398</td>
+					<td>20.398</td>
+					<td>-6.487</td>
+					<td>-0.096</td>
+					<td>6,717.935</td>
+					<td>13.463</td>
+					
+            </tr>
+            <tr>
+					<td>6,730.898</td>
+					<td>19.898</td>
+					<td>-6.986</td>
+					<td>-0.104</td>
+					<td>6,717.436</td>
+					<td>13.462</td>
+					
+            </tr>
+            <tr>
+					<td>6,730.398</td>
+					<td>19.398</td>
+					<td>-7.485</td>
+					<td>-0.111</td>
+					<td>6,716.937</td>
+					<td>13.461</td>
+					
+            </tr>
+            <tr>
+					<td>6,729.898</td>
+					<td>18.898</td>
+					<td>-7.984</td>
+					<td>-0.119</td>
+					<td>6,716.438</td>
+					<td>13.460</td>
+					
+            </tr>
+            <tr>
+					<td>6,729.398</td>
+					<td>18.398</td>
+					<td>-8.483</td>
+					<td>-0.126</td>
+					<td>6,715.939</td>
+					<td>13.459</td>
+					
+            </tr>
+            <tr>
+					<td>6,728.898</td>
+					<td>17.898</td>
+					<td>-8.982</td>
+					<td>-0.134</td>
+					<td>6,715.440</td>
+					<td>13.458</td>
+					
+            </tr>
+            <tr>
+					<td>6,728.398</td>
+					<td>17.398</td>
+					<td>-9.481</td>
+					<td>-0.141</td>
+					<td>6,714.941</td>
+					<td>13.457</td>
+					
+            </tr>
+            <tr>
+					<td>6,727.898</td>
+					<td>16.898</td>
+					<td>-9.980</td>
+					<td>-0.148</td>
+					<td>6,714.442</td>
+					<td>13.456</td>
+					
+            </tr>
+            <tr>
+					<td>6,727.398</td>
+					<td>16.398</td>
+					<td>-10.479</td>
+					<td>-0.156</td>
+					<td>6,713.943</td>
+					<td>13.455</td>
+					
+            </tr>
+            <tr>
+					<td>6,726.898</td>
+					<td>15.898</td>
+					<td>-10.978</td>
+					<td>-0.163</td>
+					<td>6,713.444</td>
+					<td>13.454</td>
+					
+            </tr>
+            <tr>
+					<td>6,726.398</td>
+					<td>15.398</td>
+					<td>-11.477</td>
+					<td>-0.171</td>
+					<td>6,712.945</td>
+					<td>13.453</td>
+					
+            </tr>
+            <tr>
+					<td>6,725.898</td>
+					<td>14.898</td>
+					<td>-11.976</td>
+					<td>-0.178</td>
+					<td>6,712.446</td>
+					<td>13.452</td>
+					
+            </tr>
+            <tr>
+					<td>6,725.398</td>
+					<td>14.398</td>
+					<td>-12.475</td>
+					<td>-0.186</td>
+					<td>6,711.947</td>
+					<td>13.451</td>
+					
+            </tr>
+            <tr>
+					<td>6,724.898</td>
+					<td>13.898</td>
+					<td>-12.974</td>
+					<td>-0.193</td>
+					<td>6,711.448</td>
+					<td>13.450</td>
+					
+            </tr>
+            <tr>
+					<td>6,724.398</td>
+					<td>13.398</td>
+					<td>-13.473</td>
+					<td>-0.200</td>
+					<td>6,710.949</td>
+					<td>13.449</td>
+					
+            </tr>
+            <tr>
+					<td>6,723.898</td>
+					<td>12.898</td>
+					<td>-13.972</td>
+					<td>-0.208</td>
+					<td>6,710.450</td>
+					<td>13.448</td>
+					
+            </tr>
+            <tr>
+					<td>6,723.398</td>
+					<td>12.398</td>
+					<td>-14.471</td>
+					<td>-0.215</td>
+					<td>6,709.951</td>
+					<td>13.447</td>
+					
+            </tr>
+            <tr>
+					<td>6,722.898</td>
+					<td>11.898</td>
+					<td>-14.970</td>
+					<td>-0.223</td>
+					<td>6,709.452</td>
+					<td>13.446</td>
+					
+            </tr>
+            <tr>
+					<td>6,722.398</td>
+					<td>11.398</td>
+					<td>-15.469</td>
+					<td>-0.230</td>
+					<td>6,708.953</td>
+					<td>13.445</td>
+					
+            </tr>
+            <tr>
+					<td>6,721.898</td>
+					<td>10.898</td>
+					<td>-15.968</td>
+					<td>-0.237</td>
+					<td>6,708.454</td>
+					<td>13.444</td>
+					
+            </tr>
+            <tr>
+					<td>6,721.398</td>
+					<td>10.398</td>
+					<td>-16.467</td>
+					<td>-0.245</td>
+					<td>6,707.955</td>
+					<td>13.443</td>
+					
+            </tr>
+            <tr>
+					<td>6,720.898</td>
+					<td>9.898</td>
+					<td>-16.966</td>
+					<td>-0.252</td>
+					<td>6,707.456</td>
+					<td>13.442</td>
+					
+            </tr>
+            <tr>
+					<td>6,720.398</td>
+					<td>9.398</td>
+					<td>-17.465</td>
+					<td>-0.260</td>
+					<td>6,706.957</td>
+					<td>13.441</td>
+					
+            </tr>
+            <tr>
+					<td>6,719.898</td>
+					<td>8.898</td>
+					<td>-17.964</td>
+					<td>-0.267</td>
+					<td>6,706.458</td>
+					<td>13.440</td>
+					
+            </tr>
+            <tr>
+					<td>6,719.398</td>
+					<td>8.398</td>
+					<td>-18.463</td>
+					<td>-0.275</td>
+					<td>6,705.959</td>
+					<td>13.439</td>
+					
+            </tr>
+            <tr>
+					<td>6,718.898</td>
+					<td>7.898</td>
+					<td>-18.962</td>
+					<td>-0.282</td>
+					<td>6,705.460</td>
+					<td>13.438</td>
+					
+            </tr>
+            <tr>
+					<td>6,718.398</td>
+					<td>7.398</td>
+					<td>-19.461</td>
+					<td>-0.289</td>
+					<td>6,704.961</td>
+					<td>13.437</td>
+					
+            </tr>
+            <tr>
+					<td>6,717.898</td>
+					<td>6.898</td>
+					<td>-19.960</td>
+					<td>-0.297</td>
+					<td>6,704.462</td>
+					<td>13.436</td>
+					
+            </tr>
+            <tr>
+					<td>6,717.398</td>
+					<td>6.398</td>
+					<td>-20.459</td>
+					<td>-0.304</td>
+					<td>6,703.963</td>
+					<td>13.435</td>
+					
+            </tr>
+            <tr>
+					<td>6,716.898</td>
+					<td>5.898</td>
+					<td>-20.958</td>
+					<td>-0.312</td>
+					<td>6,703.464</td>
+					<td>13.434</td>
+					
+            </tr>
+            <tr>
+					<td>6,716.398</td>
+					<td>5.398</td>
+					<td>-21.457</td>
+					<td>-0.319</td>
+					<td>6,702.965</td>
+					<td>13.433</td>
+					
+            </tr>
+            <tr>
+					<td>6,715.898</td>
+					<td>4.898</td>
+					<td>-21.956</td>
+					<td>-0.327</td>
+					<td>6,702.466</td>
+					<td>13.432</td>
+					
+            </tr>
+            <tr>
+					<td>6,715.398</td>
+					<td>4.398</td>
+					<td>-22.455</td>
+					<td>-0.334</td>
+					<td>6,701.967</td>
+					<td>13.431</td>
+					
+            </tr>
+            <tr>
+					<td>6,714.898</td>
+					<td>3.898</td>
+					<td>-22.954</td>
+					<td>-0.341</td>
+					<td>6,701.468</td>
+					<td>13.430</td>
+					
+            </tr>
+            <tr>
+					<td>6,714.398</td>
+					<td>3.398</td>
+					<td>-23.453</td>
+					<td>-0.349</td>
+					<td>6,700.969</td>
+					<td>13.429</td>
+					
+            </tr>
+            <tr>
+					<td>6,713.898</td>
+					<td>2.898</td>
+					<td>-23.952</td>
+					<td>-0.356</td>
+					<td>6,700.470</td>
+					<td>13.428</td>
+					
+            </tr>
+            <tr>
+					<td>6,713.398</td>
+					<td>2.398</td>
+					<td>-24.451</td>
+					<td>-0.364</td>
+					<td>6,699.971</td>
+					<td>13.427</td>
+					
+            </tr>
+            <tr>
+					<td>6,712.898</td>
+					<td>1.898</td>
+					<td>-24.950</td>
+					<td>-0.371</td>
+					<td>6,699.472</td>
+					<td>13.426</td>
+					
+            </tr></table></div>							
+								</div>
+							</div>
+						</div>
+					</div>
+				  </div><!--/row-->
+
+
+
+            </div><!--/mainContent-->
+
+		<div id="footerWrapper" class="clearfix">
+		<div id="footer"> <a href="#" data-toggle="modal" data-target="#disclaimerModal" >Disclaimer</a> || Buy me a cup of coffee if you like my efforts. Bitcoin: 3Cf1MWag2UCXuupAjaYAfwB6FTkTvqpnxj || Litecoin: LZfEzKGu79U3oGSeDbsoJNLRvcfPEBzXhs || <a href="https://bitcointalk.org/index.php?topic=390218.0" target="_blank">Feedback Here</a></div> 
+		</div>        
+            
+
+        </div><!--/outer-->
+
+    </div> <!-- primary container -->
+	<script src="../scripts/lib.js"></script>
+	<script src="../scripts/ticker_ws.js"></script>	
+    
+    </body>
+
+<!-- Mirrored from www.bfxdata.com/calculators/long by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 19 Jun 2018 16:10:05 GMT -->
+</html>

@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+    
+<!-- Mirrored from www.bfxdata.com/compare/ltc.php by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 19 Jun 2018 16:10:39 GMT -->
+<head>
+
+    <link rel="shortcut icon" href="favicon.ico">
+
+    <title>LTCUSD Market Comparison</title>
+	    <meta name="Bfxdata" content="">
+
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0" />
+ 	 	<link href='http://fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
+	<link href="../../maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+     <script src="../../ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>  
+	<script src="../../code.highcharts.com/stock/highstock.js"></script>	
+	<script src="../../code.highcharts.com/stock/modules/exporting.js"></script>	
+	<script src="../scripts/graphs/compare/graphMarketComparisonLTCUSD.js"></script>
+    <script src="../style/js/bootstrap.min.js"></script>
+	<script src="../../cdn.socket.io/socket.io-1.3.4.js"></script>
+
+   
+    <!-- Bootstrap core CSS -->
+
+    <link href="../style/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+
+	<link rel="stylesheet" href="compare.css" />
+   
+    
+    
+    
+    
+	<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','../../www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-47091875-1', 'bfxdata.com');
+	ga('require', 'displayfeatures');
+    ga('send', 'pageview');
+
+</script>
+    
+    </head>
+    
+    <body>
+
+
+                
+
+
+
+
+    <div id="primaryContainer" class="primaryContainer clearfix">
+        <div id="outer" class="clearfix">
+           
+
+              		
+<nav class="navbar navbar-static-top header">
+ 	<div class="col-md-12">
+        <div class="navbar-header">
+          
+          <a href="../index.html" class="navbar-brand"><span style="font-weight:800;">BFX</span><span style="font-weight:300;">DATA</span></a>
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse1" id="collapsbutton">
+          <i><img src="../img/mobile_table_gray.png" width="15" height="15"></i>
+          </button>
+      
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-collapse1">
+          <ul class="nav navbar-nav navbar-right">
+				
+				
+				<li class="dropdown" id="share_buttons">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-share-alt"></i></a>
+				<ul class="dropdown-menu" style="min-width: 80px; width: 80px;">
+					<li><a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fhttp%3Abfxdata.com&amp;t=" target="_blank" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(document.URL) + '&t=' + encodeURIComponent(document.URL)); return false;"><img src="../social/images/flat_web_icon_set/inverted/Facebook.png"></a></li>
+					<li><a href="https://twitter.com/intent/tweet?source=http%3A%2F%2Fhttp%3Abfxdata.com&amp;text=:%20http%3A%2F%2Fhttp%3Abfxdata.com&amp;via=bfxdata" target="_blank" title="Tweet" onclick="window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(document.title) + '%20' + encodeURIComponent(document.URL)); return false;"><img src="../social/images/flat_web_icon_set/inverted/Twitter.png"></a></li>
+					<li><a href="https://plus.google.com/share?url=http%3A%2F%2Fhttp%3Abfxdata.com" target="_blank" title="Share on Google+" onclick="window.open('https://plus.google.com/share?url=' + encodeURIComponent(document.URL)); return false;"><img src="../social/images/flat_web_icon_set/inverted/Google%2b.png"></a></li>
+					<li><a href="http://www.reddit.com/submit?url=http%3A%2F%2Fhttp%3Abfxdata.com&amp;title=" target="_blank" title="Submit to Reddit" onclick="window.open('http://www.reddit.com/submit?url=' + encodeURIComponent(document.URL) + '&title=' +  encodeURIComponent(document.title)); return false;"><img src="../social/images/flat_web_icon_set/inverted/Reddit.png"></a></li>
+				</ul>
+				</li>
+				
+				<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Margin Funding<b class="caret"></b></a>
+				<ul class="dropdown-menu">
+					<li class="dropdown-header">Select Symbol: </li>
+					<li class="dropdown-submenu">
+					<a tabindex="-1" href="#">USD</a>
+					<ul class="dropdown-menu">
+						<li><a href="../swapstats/usd.html">Live</a></li>
+						<li><a href="../swaphistory/usd.html">Historic</a></li>						
+					</ul>
+					</li>
+					<li class="dropdown-submenu">
+					<a tabindex="-1" href="#">BTC</a>
+					<ul class="dropdown-menu">
+						<li><a href="../swapstats/btc.html">Live</a></li>
+						<li><a href="../swaphistory/btc.html">Historic</a></li>
+					</ul>
+					</li>
+					<li class="dropdown-submenu">
+					<a tabindex="-1" href="#">ETH</a>
+					<ul class="dropdown-menu">
+						<li><a href="../swapstats/eth.html">Live</a></li>
+						<li><a href="../swaphistory/eth.html">Historic</a></li>						
+					</ul>
+					</li>
+					<li class="dropdown-submenu">
+					<a tabindex="-1" href="#">ETC</a>
+					<ul class="dropdown-menu">
+						<li><a href="../swapstats/etc.html">Live</a></li>
+						<li><a href="../swaphistory/etc.html">Historic</a></li>						
+					</ul>
+					</li>
+					<li class="dropdown-submenu">
+					<a tabindex="-1" href="#">BFX</a>
+					<ul class="dropdown-menu">
+						<li><a href="../swapstats/bfx.html">Live</a></li>
+						<li><a href="../swaphistory/bfx.html">Historic</a></li>
+					</ul>
+					</li>
+					<li class="dropdown-submenu">
+					<a tabindex="-1" href="#">LTC</a>
+					<ul class="dropdown-menu">
+						<li><a href="../swapstats/ltc.html">Live</a></li>
+						<li><a href="../swaphistory/ltc.html">Historic</a></li>						
+					</ul>
+					</li>
+																				
+					<li class="dropdown-header">Sum Active Margin Funding</li>
+					<li><a href="../swaphistory/totals.html">Totals</a></li>						
+
+				</ul>
+				</li>
+
+				
+				<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Bitfinex Orderbooks<b class="caret"></b></a>
+				<ul class="dropdown-menu">
+					<li class="dropdown-header">Select Symbol: </li>
+							<li><a href="../orderbooks/btcusd.html">BTCUSD</a></li>
+							<li><a href="../orderbooks/ethusd.html">ETHUSD</a></li>
+							<li><a href="../orderbooks/etcusd.html">ETCUSD</a></li>
+							<li><a href="../orderbooks/ltcusd.html">LTCUSD</a></li>
+							<li><a href="../orderbooks/bfxusd.html">BFXUSD</a></li>
+							<li><a href="../orderbooks/ethbtc.html">ETHBTC</a></li>
+							<li><a href="../orderbooks/etcbtc.html">ETCBTC</a></li>
+							<li><a href="../orderbooks/ltcbtc.html">LTCBTC</a></li>
+							<li><a href="../orderbooks/bfxbtc.html">BFXBTC</a></li>
+				</ul>
+				</li>
+
+				<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Sentiment<b class="caret"></b></a>
+				<ul class="dropdown-menu">
+					<li class="dropdown-header">Long Vs Short</li>
+							<li><a href="../positions/btcusd.html">BTCUSD</a></li>
+							<li><a href="../positions/ethusd.html">ETHUSD</a></li>
+							<li><a href="../positions/etcusd.html">ETCUSD</a></li>
+							<li><a href="../positions/ltcusd.html">LTCUSD</a></li>
+							<li><a href="../positions/bfxusd.html">BFXUSD</a></li>
+							<li><a href="../positions/ethbtc.html">ETHBTC</a></li>
+							<li><a href="../positions/etcbtc.html">ETCBTC</a></li>
+							<li><a href="../positions/ltcbtc.html">LTCBTC</a></li>
+							<li><a href="../positions/bfxbtc.html">BFXBTC</a></li>
+					</ul>
+				</li>
+
+				<li><a href="https://bfxdata.com/datadownload">CSV-files</a></li>
+			
+				
+				
+			<!--	<li><a href="#" data-toggle="modal" data-target="#refererModal" style="color:red;">10% Bitfinex Fee Discount</a></li> -->
+				
+				<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Calculators<b class="caret"></b></a>
+				<ul class="dropdown-menu">
+					<li class="dropdown-header">Trade Calculators</li>
+					<li><a href="../calculators/long.html">Long Position</a></li>
+					<li><a href="../calculators/short.html">Short Position</a></li>
+					<li class="dropdown-header">Margin Funding Calculator</li>
+					<li><a href="../calculators/swaps.html">Fixed % Interst Calculator</a></li>	
+					<li><a href="../calculators/frrswaps.html">FRR % Interest Calculator</a></li>		
+				</ul>
+				</li>
+				<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Mobile<b class="caret"></b></a>
+				<ul class="dropdown-menu">
+					<li><a href="#" data-toggle="modal" data-target="#adnroidAppModal">Android App</a></li>
+				</ul>
+				</li>
+				<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Donate<b class="caret"></b></a>
+				<ul class="dropdown-menu">
+					<li><a target="_blank" href="https://blockchain.info/address/1EU22zLeBedUyqwyTTRpULidMwA296NRpk">Bitcoin</a></li>
+					<li><a target="_blank" href="https://live.blockcypher.com/ltc/address/LQsRc1aRsy882WtdJre4RKSBEzKMHta2n8/">Litcoin</a></li>
+					<li><a target="_blank" href="http://omnichest.info/lookupadd.aspx?address=1Fqmr5UuP1qA8DQu4MfQ5cfvXN5NymGfMh">Tether</a></li>
+					<li><a target="_blank" href="https://etherscan.io/address/0xa5fefb7c61ba9d8029ab02e0e3ebeb8f12b4368c">Ether</a></li>							
+					<li><a target="_blank" href="http://gastracker.io/addr/0xa5fefb7c61ba9d8029ab02e0e3ebeb8f12b4368c">Ether Classic</a></li>							
+				</ul>
+				</li>
+				<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Feedback<b class="caret"></b></a>
+				<ul class="dropdown-menu">
+					<li><a target="_blank" href="mailto:bfxdata@gmail.com">Contact</a></li>
+					<li><a target="_blank" href="https://bitcointalk.org/index.php?topic=390218.0">Feedback</a></li>
+				</ul>
+				</li>
+				<li><a href="#" data-toggle="modal" data-target="#newsModal">News</a>
+				</li>
+           </ul>
+        </div>	
+     </div>	
+</nav>
+
+
+
+
+
+           			<div id="ticker">
+              		<div id="tickerTablediv" class="tickerTable" style="margin: auto;">
+    <table style="margin: auto;" class="text-nowrap">
+        <tr>
+
+            <td  <td colspan="2">
+
+					<div id="clock"></div>
+
+
+            </td>
+<!-- 
+            <td>
+                &nbsp; &nbsp;
+            </td>
+ -->
+			<div id="ticker_BTCUSD">
+            <td class="ticker_bold" style="color:#428bca;">BTCUSD:</td>
+            <td class='ticker_bold'>Bitfinex:</td>
+            <div><td id="bitfinexBTCUSD">0</td></div>
+            <td class='ticker_bold text-nowrap'>BTCe:</td>
+            <div><td id="btceBTCUSD">0</td></div>
+            <td class='ticker_bold'>Bitstamp:</td>
+            <div><td id="bitstampBTCUSD">0</td></div>
+            </div>
+			<div id="ticker_BTCCNY">            
+            <td class="ticker_bold" style="color:#428bca;">BTCCNY:</td>
+            <td class='ticker_bold'>Huobi:</td>
+            <div><td id="huobiBTCCNY">0</td></div>
+            <td class='ticker_bold'>BtcChina:</td>
+            <div><td id="btcchinaBTCCNY">0</td></div>
+            <td class='ticker_bold'>OkCoin:</td>
+            <div><td id="okcoinBTCCNY">0</td></div>
+            </div> 
+        	<div id="ticker_LTCUSD">            
+            <td class="ticker_bold" style="color:#428bca;">LTCUSD:</td>
+            <td class='ticker_bold'>Bitfinex:</td>
+            <div><td id="bitfinexLTCUSD">0</td></div>
+            <td class='ticker_bold text-nowrap'>BTCe:</td>
+            <div><td id="btceLTCUSD">0</td></div>
+            </div> 
+        	<div id="ticker_LTCCNY">                        
+            <td class="ticker_bold" style="color:#428bca;">LTCCNY:</td>
+            <td class='ticker_bold'>Okcoin:</td>
+            <div><td id="okcoinLTCCNY">0</td></div>
+            <td class='ticker_bold'>Huobi:</td>
+            <div><td id="huobiLTCCNY">0</td></div>
+            </div>
+        </tr>
+    </table>
+</div>           			
+           			</div>
+
+
+           
+<!-- 
+            <div id="headerWrapper" class="clearfix">
+
+            		
+
+            </div> -->
+            <div id="mainContent" class="clearfix">
+
+				   <div class="row">
+				   <div class="col-md-12 col-sm-12">
+						  <div class="panel panel-default">
+						  <div class="panel-heading"><h4>LTCUSD price compared for Bitfinex / BTC-e</h4></div>
+							<div class="panel-body">
+								<div id="graphMarketComparisonLTC">		  
+								</div>
+							</div>
+						</div>
+					</div>
+				  </div><!--/row-->
+
+
+
+
+            </div><!--/mainContent-->
+
+		<div id="footerWrapper" class="clearfix">
+		<div id="footer"> <a href="#" data-toggle="modal" data-target="#disclaimerModal" >Disclaimer</a> || Buy me a cup of coffee if you like my efforts. Bitcoin: 3Cf1MWag2UCXuupAjaYAfwB6FTkTvqpnxj || Litecoin: LZfEzKGu79U3oGSeDbsoJNLRvcfPEBzXhs || <a href="https://bitcointalk.org/index.php?topic=390218.0" target="_blank">Feedback Here</a></div> 
+		</div>        
+            
+
+        </div><!--/outer-->
+
+    </div> <!-- primary container -->
+	<script src="../scripts/lib.js"></script>
+	<script src="../scripts/ticker_ws.js"></script>	
+
+    
+    </body>
+
+<!-- Mirrored from www.bfxdata.com/compare/ltc.php by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 19 Jun 2018 16:10:40 GMT -->
+</html>
